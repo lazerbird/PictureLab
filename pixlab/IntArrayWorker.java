@@ -120,4 +120,14 @@ public class IntArrayWorker
         }
         return max;
     }
+    
+    public int getColTotal(int col) {
+    int sum=0;
+    int i=0;
+    for (int[] row: matrix) {
+         sum+=matrix[i][col];
+         i++;
+    }
+    return sum;
+    }
 }
