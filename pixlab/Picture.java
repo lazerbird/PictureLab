@@ -96,8 +96,99 @@ public class Picture extends SimplePicture
         pixelObj.setBlue(0);
       }
     }
+  } // END zeroBlue()
+  
+  public void zeroRed() {
+      Pixel[][] picture = this.getPixels2D();
+      for (Pixel[] row: picture) {
+          for (Pixel p: row) {
+             p.setRed(0);
+          }
+      }
   }
   
+  
+  public void KeepOnlyBlue() {
+     Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(0);
+        pixelObj.setGreen(0);
+      }
+    }
+  }
+  
+  public void KeepOnlyGreen() {
+     Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(0);
+        pixelObj.setBlue(0);
+      }
+    }
+  }
+  
+  public void KeepOnlyRed() {
+     Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setBlue(0);
+        pixelObj.setGreen(0);
+      }
+    }
+  }
+  
+  public void negate() {
+      Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(255-pixelObj.getRed());
+        pixelObj.setGreen(255-pixelObj.getGreen());
+        pixelObj.setBlue(255-pixelObj.getBlue());
+      }
+    }
+  }
+  
+  public void grayscale() {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        int av=(pixelObj.getRed()+pixelObj.getBlue()+pixelObj.getGreen())/3;
+        pixelObj.setRed(av);
+        pixelObj.setGreen(av);
+        pixelObj.setBlue(av);
+      }
+    }
+    }
+    
+    public void fixUnderwater() {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        if (pixelObj.getRed()<20 && pixelObj.getRed()>50 && 
+        pixelObj.getGreen()<100 && pixelObj.getGreen()>100 && 
+        pixelObj.getBlue()<100 && pixelObj.getBlue()>200) {
+        pixelObj.setRed(10);
+        pixelObj.setGreen(100);
+        pixelObj.setBlue(160);
+        }
+      }
+    }
+    
+    }
+    
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
