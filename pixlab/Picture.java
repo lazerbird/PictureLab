@@ -177,12 +177,12 @@ public class Picture extends SimplePicture
     {
       for (Pixel pixelObj : rowArray)
       {
-        if (pixelObj.getRed()<20 && pixelObj.getRed()>50 && 
-        pixelObj.getGreen()<100 && pixelObj.getGreen()>100 && 
-        pixelObj.getBlue()<100 && pixelObj.getBlue()>200) {
-        pixelObj.setRed(10);
-        pixelObj.setGreen(100);
-        pixelObj.setBlue(160);
+        if (pixelObj.getRed()>10 && pixelObj.getRed()<30 && 
+        pixelObj.getGreen()>150 && pixelObj.getGreen()<180 && 
+        pixelObj.getBlue()>156 && pixelObj.getBlue()<200) {
+        pixelObj.setRed(204);
+        pixelObj.setGreen(229);
+        pixelObj.setBlue(255);
         }
       }
     }
