@@ -240,6 +240,45 @@ public class Picture extends SimplePicture
       }
     }      
 }
+
+  public void mirrorHorizontalBotToTop() {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel upPixel = null;
+    Pixel downPixel = null;
+    int width = pixels.length;
+    for (int row = 0; row < width / 2; row++)
+    {
+      for (int col = 0; col < pixels[0].length ; col++)
+      {
+        downPixel = pixels[row][col];
+        upPixel = pixels[width-1-row][col];
+        upPixel.setColor(downPixel.getColor());
+      }
+    }      
+  }
+  
+  public void mirrorDiagonal() {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int width = pixels.length;
+    if (pixels[0].length<width) {
+        width=pixels[0].length;
+    }
+    for (int row = 0; row < width; row++)
+    {
+      for (int col = 0; col < width; col++)
+      {
+        if (row==col) {
+            break;
+        }
+            leftPixel = pixels[row][col];
+            rightPixel = pixels[col][row];
+            rightPixel.setColor(leftPixel.getColor());
+        
+      }
+    }  
+  }
     
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
@@ -261,9 +300,32 @@ public class Picture extends SimplePicture
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+        count++;
       }
     }
+    System.out.println(count);
   }
+  
+  public void mirrorArms() {
+    int mirrorPoint = 205;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    
+    // loop through the rows
+    for (int row = 156; row < 203; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 99; col < mirrorPoint; col++)
+      {
+        leftPixel = pixels[row][col];      
+        rightPixel = pixels[row]                       
+                         [mirrorPoint - col + mirrorPoint];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+    
+    }
   
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
