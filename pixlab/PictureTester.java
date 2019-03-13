@@ -92,7 +92,7 @@ public static void testMirrorHorizontal()
     }
     
     public static void testMirrorDiagonal() {
-    Picture beach = new Picture("CumberlandIsland.jpg");
+    Picture beach = new Picture("beach.jpg");
       beach.explore();
       beach.mirrorDiagonal();
       beach.explore();
