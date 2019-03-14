@@ -123,6 +123,14 @@ public static void testMirrorHorizontal()
     gull.explore();
   }
   
+  public static void testCopy()
+  {
+    Picture pic=new Picture("640x480.jpg");
+    Picture canvas= new Picture("seagull.jpg");
+    pic.copy(canvas, 0, 0, 100, 100, 100, 100);
+    pic.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
@@ -130,6 +138,12 @@ public static void testMirrorHorizontal()
     canvas.createCollage();
     canvas.explore();
   }
+  
+  public static void testMyCollage() {
+    Picture canvas = new Picture("640x480.jpg");
+    canvas.myCollage();
+    canvas.explore();
+    }
   
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
@@ -162,7 +176,8 @@ public static void testMirrorHorizontal()
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
-    testCollage();
+    //testCollage();
+    testMyCollage();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
