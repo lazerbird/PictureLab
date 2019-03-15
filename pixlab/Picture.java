@@ -107,6 +107,15 @@ public class Picture extends SimplePicture
       }
   }
   
+  public void zeroGreen() {
+      Pixel[][] picture = this.getPixels2D();
+      for (Pixel[] row: picture) {
+          for (Pixel p: row) {
+             p.setGreen(0);
+          }
+      }
+  }
+  
   
   public void KeepOnlyBlue() {
      Pixel[][] pixels = this.getPixels2D();
@@ -412,12 +421,12 @@ public class Picture extends SimplePicture
   public void myCollage() {
     Picture flower1 = new Picture("flower1.jpg");
     Picture flower2 = new Picture("flower2.jpg");
-    flower1.grayscale(); 
-    flower2.negate();
+    flower1.zeroRed(); 
+    flower2.zeroBlue();
     this.copy(flower1,0,0);
     this.copy(flower2,100,0);
-    Picture temple = new Picture("caterpillar.jpg");
-    temple.zeroBlue();
+    Picture temple = new Picture("beach.jpg");
+    temple.zeroRed();
     this.copy(temple,200,0);
     Picture robot = new Picture("robot.jpg");
     this.copy(robot, 350, 0);
@@ -464,6 +473,23 @@ public class Picture extends SimplePicture
           leftPixel.setColor(Color.BLACK);
         else
           leftPixel.setColor(Color.WHITE);
+      }
+    }
+    
+    Pixel topPixel = null;
+    Pixel botPixel = null;
+    Color botColor = null;
+    for (int row = 0; row < pixels.length-1; row++)
+    {
+      for (int col = 0; 
+           col < pixels[0].length; col++)
+      {
+        topPixel = pixels[row][col];
+        botPixel = pixels[row+1][col];
+        botColor = botPixel.getColor();
+        if (topPixel.colorDistance(botColor) > 
+            edgeDist)
+          topPixel.setColor(Color.BLACK);
       }
     }
   }

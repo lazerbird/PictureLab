@@ -17,6 +17,22 @@ public class PictureTester
     beach.explore();
   }
   
+  public static void testZeroRed()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.zeroRed();
+    beach.explore();
+  }
+  
+  public static void testZeroGreen()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.zeroGreen();
+    beach.explore();
+  }
+  
   public static void testKeepOnlyBlue() {
     Picture beach = new Picture("beach.jpg");
     beach.explore();
@@ -125,10 +141,14 @@ public static void testMirrorHorizontal()
   
   public static void testCopy()
   {
-    Picture pic=new Picture("640x480.jpg");
+    /*Picture pic=new Picture("640x480.jpg");
     Picture canvas= new Picture("seagull.jpg");
-    pic.copy(canvas, 0, 0, 100, 100, 100, 100);
-    pic.explore();
+    pic.copy(canvas, 50, 50, 50, 50, 600, 600);
+    pic.explore();*/
+    Picture ocean = new Picture("beach.jpg");
+    Picture flower = new Picture("flower1.jpg");
+    ocean.copy(flower, 50, 100);
+    ocean.explore();
   }
   
   /** Method to test the collage method */
@@ -161,6 +181,8 @@ public static void testMirrorHorizontal()
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
+    //testZeroRed();
+    //testZeroGreen();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
@@ -177,9 +199,9 @@ public static void testMirrorHorizontal()
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
-    testMyCollage();
+    //testMyCollage();
     //testCopy();
-    //testEdgeDetection();
+    testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
